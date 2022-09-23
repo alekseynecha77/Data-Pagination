@@ -17,11 +17,10 @@ This function will create and insert/append the elements needed to display a "pa
 function showPage(list, page) {
 
    // create two variables which will represent the index for the first and last student on the page
-  //  var list = ['esf', 'alex', 'peter'];
-   // select the element with a class of `student-list` and assign it to a variable
  var startIndex = page*9 -9;
 
  var endIndex = page*9;
+   // select the element with a class of `student-list` and assign it to a variable
 
  var StudentLI = document.querySelector('.student-list');
 
@@ -30,7 +29,10 @@ function showPage(list, page) {
 
    // loop over the length of the `list` parameter
    for (let i = 0; i<list.length; i++){
-
+  // inside the loop create a conditional to display the proper students
+       // inside the conditional:
+         // create the elements needed to display the student information
+         // insert the above elements
     if (i >= startIndex && endIndex > i) {
       /* code to run if condition is true */
 var StudentStyle = `<li class="student-item cf">
@@ -53,18 +55,9 @@ var StudentStyle = `<li class="student-item cf">
 
     StudentLI.insertAdjacentHTML('beforeend', StudentStyle)
 
-
-
-
-  
-      /* run some other code instead */
-
    }
 
-     // inside the loop create a conditional to display the proper students
-       // inside the conditional:
-         // create the elements needed to display the student information
-         // insert the above elements
+   
 
  }
 
@@ -98,6 +91,16 @@ var LinkLi = document.querySelector('.link-list');
   }
   document.querySelector('button').classList.add('active');
 
+    // create the elements needed to display the pagination button
+    // insert the above elements
+
+  // give the first pagination button a class of "active"
+
+  // create an event listener on the `link-list` element
+    // if the click target is a button:
+      // remove the "active" class from the previous button
+      // add the active class to the clicked button
+      // call the showPage function passing the `list` parameter and page to display as arguments
   LinkLi.addEventListener('click', (e)=>{
     document.querySelector('button').classList.remove('active');
     e.target.classList.add("active");
@@ -109,17 +112,6 @@ showPage(data, text);
   });
 
 
-    // create the elements needed to display the pagination button
-    // insert the above elements
-
-  // give the first pagination button a class of "active"
-
-  // create an event listener on the `link-list` element
-    // if the click target is a button:
-      // remove the "active" class from the previous button
-      // add the active class to the clicked button
-      // call the showPage function passing the `list` parameter and page to display as arguments
 }
 showPage(data, 1);
 addPagination(data);
-// Call functions
