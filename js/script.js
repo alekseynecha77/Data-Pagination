@@ -79,17 +79,17 @@ This function will create and insert/append the elements needed for the paginati
 
 function addPagination(list) {
   // create a variable to calculate the number of pages needed
-var calculatePages =  Math.ceil(list.length / page);
+var calculatePages =  Math.ceil(list.length / 9);
 var LinkLi = document.querySelector('.link-list');
   // select the element with a class of `link-list` and assign it to a variable
   // set the innerHTML property of the variable you just created to an empty string
   LinkLi.innerHTML = ' ';
 
   // loop over the number of pages needed
-  for(let i =1; i< calculatePages.length; i++ ){
+  for(let i =1; i<= calculatePages; i++ ){
     let button = `
     <li>
-  <button type="button">${calculatePages[i].page}</button>
+  <button type="button">${i}</button>
 </li>
     `;
 
