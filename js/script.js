@@ -115,3 +115,27 @@ showPage(data, text);
 }
 showPage(data, 1);
 addPagination(data);
+
+
+const clearInput = () => {
+  const input = document.getElementsByTagName("input")[0];
+  input.value = "";
+}
+
+const clearBtn = document.getElementById("clear-btn");
+clearBtn.addEventListener("click", clearInput);
+const list = document.querySelector('.student-list li');
+
+const searchBar = document.forms["search-people"].querySelector("input");
+searchBar.addEventListener('keyup', function(e){
+const term = e.target.value.toLowerCase();
+const persons = list.getElementsByTagName("li");
+Array.from(persons).forEach(function(person){
+  const title = book.firstElementChild.textContent;
+  if(title.toLowerCase().indexOf(term)!= -1){
+    person.style.display ='block';
+  
+  }else {    person.style.display ='none';
+  }
+})
+});
