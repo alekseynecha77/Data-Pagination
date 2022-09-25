@@ -133,7 +133,7 @@ function searchFunction(){
       mainEl[i].parentNode.parentNode.style.display = "none";
     }
  /*    if(mainEl === 'none'){
-      mainEl[i].parentNode.parentNode.textContent = "aweawedawed";
+      mainEl[i].parentNode.parentNode.textContent = "zero results found";
 
     } */
 
