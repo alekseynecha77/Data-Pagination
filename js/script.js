@@ -102,12 +102,14 @@ var LinkLi = document.querySelector('.link-list');
       // add the active class to the clicked button
       // call the showPage function passing the `list` parameter and page to display as arguments
   LinkLi.addEventListener('click', (e)=>{
-    document.querySelector('button').classList.remove('active');
+    if(e.target.getAttribute('type')=== "button"){
+      document.querySelector(".active").classList.remove("active");
+
     e.target.classList.add("active");
     let text = e.target.textContent;
 
 showPage(data, text);
-
+    }
   
   });
 
@@ -117,9 +119,11 @@ showPage(data, 1);
 addPagination(data);
 
 
-
+//Search Functionality
 const input = document.getElementById("myInput");
-  input.addEventListener('keyup', searchFunction);
+
+input.addEventListener('keyup', searchFunction);
+
 function searchFunction(){
   filterVal = document.getElementById('myInput').value.toLowerCase();
   let mainEl = document.querySelectorAll(".student-details h3");
@@ -129,13 +133,13 @@ function searchFunction(){
     let filter = captions.includes(filterVal);
     if (filter === true) {
       mainEl[i].parentNode.parentNode.style.display = "flex";
-    } else {
+    } 
+     else {
+
       mainEl[i].parentNode.parentNode.style.display = "none";
     }
- /*    if(mainEl === 'none'){
-      mainEl[i].parentNode.parentNode.textContent = "zero results found";
 
-    } */
+  
 
   }
 
