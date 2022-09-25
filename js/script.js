@@ -118,60 +118,29 @@ addPagination(data);
 
 
 
-
+const input = document.getElementById("myInput");
+  input.addEventListener('keyup', searchFunction);
 function searchFunction(){
-  var input, filter, txtValue, i, div, li, head;
-   input = document.getElementById("myInput");
-   filter = input.value.toLowerCase();
+  filterVal = document.getElementById('myInput').value.toLowerCase();
+  let mainEl = document.querySelectorAll(".student-details h3");
   
-  // let searchDiv = document.createElement('div');
-  // searchDiv.innerHTML = 
-  // `
-  // <img class="avatar" src="  ${list[i].picture.thumbnail}" alt="Profile Picture">
-  // <h3>
-  //   ${list[i]["name"].first}
-  //   ${list[i]["name"].last}
+  for (let i = 0; i < mainEl.length; i++) {
+    let captions = mainEl[i].innerHTML.toLowerCase();
+    let filter = captions.includes(filterVal);
+    if (filter === true) {
+      mainEl[i].parentNode.parentNode.style.display = "flex";
+    } else {
+      mainEl[i].parentNode.parentNode.style.display = "none";
+    }
+ /*    if(mainEl === 'none'){
+      mainEl[i].parentNode.parentNode.textContent = "aweawedawed";
 
-  // </h3>
-  // <span class="email">${list[i].email}</span>
-  
-  // `;
-div = document.querySelector('div .student-details');
-li = div.getElementsByTagName('li');
-  for (i = 0; i < li.length; i++) {
-    head = li[i].getElementsByTagName("h3")[0];
-    txtValue = head.textContent || head.innerText;
-    if (txtValue.toLowerCase().indexOf(filter) > -1) {
-      li[i].style.display = "block";
-  } else {
-      li[i].style.display = "none";
+    } */
+
   }
-}
+
  }
-// const div = document.querySelector('.student-details');
-// const names = div.getElementsByTagName("h3");
 
-//  let input = document.getElementById('myInput');
 
-//  input.addEventListener('keyup', () =>{
 
-//   for(let i of names){
-//     //convert input to lowercase and compare with each string
-//     if(i.toLowerCase().startsWith(input.value.toLowerCase()) && input.value != ""){
-//   //create li element
-//       let listItem = document.createElement("li");
-//       //one common class name
-//       listItem.classList.add('list-items');
-      
-//       listItem.style.cursor = 'pointer';
-//       listItem.setAttribute('onclick', "displayNames('"+ i +"')");
-//       //display match part in bold
-//       let word = "<b>"+ i.substring(0,input.value.length)+"</b>";
-//       word += i.substring(input.value.length);
-//       //display the value in array
-//       listItem.innerHTML = word;
-//       document.querySelector('.list').appendChild(listItem);
-//     }
-//   }
-//  });
 
