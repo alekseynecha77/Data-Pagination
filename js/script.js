@@ -119,66 +119,47 @@ addPagination(data);
 
 
 
-// const clearBtn = document.getElementById("clear-btn");
-// clearBtn.addEventListener("click", clearInput);
-// const list = document.querySelector('.student-list li');
+function myFunction(){
+  var input, filter, li, a, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toLowerCase();
 
-// const searchBar = document.forms["search-people"].querySelector("input");
-// searchBar.addEventListener('keyup', function(e){
-// const term = e.target.value.toLowerCase();
-// const persons = list.getElementsByTagName("li");
-// Array.from(persons).forEach(function(person){
-//   const title = book.firstElementChild.textContent;
-//   if(title.toLowerCase().indexOf(term)!= -1){
-//     person.style.display ='block';
-  
-//   }else {    
-//     person.style.display ='none';
-//   }
-// })
-// });
-
-// function myFunction(){
-//   var input, filter, li, a, i, txtValue;
-//   input = document.getElementById("myInput");
-//   filter = input.value.toLowerCase();
-
-//   ul = document.querySelector("ul .student-list");
-//   li = ul.getElementsByTagName("li");
-//   for (i = 0; i < li.length; i++) {
-//     a = li[i].getElementsByTagName("a")[0];
-//     txtValue = a.textContent || a.innerText;
-//     if (txtValue.toUpperCase().indexOf(filter) > -1) {
-//       li[i].style.display = "block";
-//   } else {
-//       li[i].style.display = "none";
-//   }
-// }
-// }
-const div = document.querySelector('.student-details');
-const names = div.getElementsByTagName("h3");
-
- let input = document.getElementById('myInput');
-
- input.addEventListener('keyup', () =>{
-
-  for(i = 0; i<names; i++){
-    //convert input to lowercase and compare with each string
-    if(i.toLowerCase().startsWith(input.value.toLowerCase()) && input.value != ""){
-  //create li element
-      let listItem = document.createElement("li");
-      //one common class name
-      listItem.classList.add('list-items');
-      
-      listItem.style.cursor = 'pointer';
-      listItem.setAttribute('onclick', "displayNames('"+ i +"')");
-      //display match part in bold
-      let word = "<b>"+ i.substring(0,input.value.length)+"</b>";
-      word += i.substring(input.value.length);
-      //display the value in array
-      listItem.innerHTML = word;
-      document.querySelector('.list').appendChild(listItem);
-    }
+  ul = document.querySelector("ul .student-list");
+  li = ul.getElementsByTagName("li");
+  for (i = 0; i < li.length; i++) {
+    a = li[i].getElementsByTagName("a")[0];
+    txtValue = a.textContent || a.innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "block";
+  } else {
+      li[i].style.display = "none";
   }
- });
+}
+}
+// const div = document.querySelector('.student-details');
+// const names = div.getElementsByTagName("h3");
+
+//  let input = document.getElementById('myInput');
+
+//  input.addEventListener('keyup', () =>{
+
+//   for(let i of names){
+//     //convert input to lowercase and compare with each string
+//     if(i.toLowerCase().startsWith(input.value.toLowerCase()) && input.value != ""){
+//   //create li element
+//       let listItem = document.createElement("li");
+//       //one common class name
+//       listItem.classList.add('list-items');
+      
+//       listItem.style.cursor = 'pointer';
+//       listItem.setAttribute('onclick', "displayNames('"+ i +"')");
+//       //display match part in bold
+//       let word = "<b>"+ i.substring(0,input.value.length)+"</b>";
+//       word += i.substring(input.value.length);
+//       //display the value in array
+//       listItem.innerHTML = word;
+//       document.querySelector('.list').appendChild(listItem);
+//     }
+//   }
+//  });
 
