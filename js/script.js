@@ -143,13 +143,13 @@ function myFunction(){
   input = document.getElementById("myInput");
   filter = input.value.toLowerCase();
 
-  div = document.querySelector("div .student-details");
-  li = div.getElementsByTagName("li");
+  ul = document.querySelector("ul .student-list");
+  li = ul.getElementsByTagName("li");
   for (i = 0; i < li.length; i++) {
     a = li[i].getElementsByTagName("a")[0];
     txtValue = a.textContent || a.innerText;
     if (txtValue.toUpperCase().indexOf(filter) > -1) {
-      li[i].style.display = "";
+      li[i].style.display = "block";
   } else {
       li[i].style.display = "none";
   }
