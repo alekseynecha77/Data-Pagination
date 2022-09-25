@@ -117,25 +117,41 @@ showPage(data, 1);
 addPagination(data);
 
 
-const clearInput = () => {
-  const input = document.getElementsByTagName("input")[0];
-  input.value = "";
-}
 
-const clearBtn = document.getElementById("clear-btn");
-clearBtn.addEventListener("click", clearInput);
-const list = document.querySelector('.student-list li');
 
-const searchBar = document.forms["search-people"].querySelector("input");
-searchBar.addEventListener('keyup', function(e){
-const term = e.target.value.toLowerCase();
-const persons = list.getElementsByTagName("li");
-Array.from(persons).forEach(function(person){
-  const title = book.firstElementChild.textContent;
-  if(title.toLowerCase().indexOf(term)!= -1){
-    person.style.display ='block';
+// const clearBtn = document.getElementById("clear-btn");
+// clearBtn.addEventListener("click", clearInput);
+// const list = document.querySelector('.student-list li');
+
+// const searchBar = document.forms["search-people"].querySelector("input");
+// searchBar.addEventListener('keyup', function(e){
+// const term = e.target.value.toLowerCase();
+// const persons = list.getElementsByTagName("li");
+// Array.from(persons).forEach(function(person){
+//   const title = book.firstElementChild.textContent;
+//   if(title.toLowerCase().indexOf(term)!= -1){
+//     person.style.display ='block';
   
-  }else {    person.style.display ='none';
+//   }else {    
+//     person.style.display ='none';
+//   }
+// })
+// });
+
+function myFunction(){
+  var input, filter, li, a, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toLowerCase();
+
+  div = document.querySelector("div .student-details");
+  li = div.getElementsByTagName("li");
+  for (i = 0; i < li.length; i++) {
+    a = li[i].getElementsByTagName("a")[0];
+    txtValue = a.textContent || a.innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+  } else {
+      li[i].style.display = "none";
   }
-})
-});
+}
+}
