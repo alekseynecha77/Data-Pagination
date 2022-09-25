@@ -138,20 +138,47 @@ addPagination(data);
 // })
 // });
 
-function myFunction(){
-  var input, filter, li, a, i, txtValue;
-  input = document.getElementById("myInput");
-  filter = input.value.toLowerCase();
+// function myFunction(){
+//   var input, filter, li, a, i, txtValue;
+//   input = document.getElementById("myInput");
+//   filter = input.value.toLowerCase();
 
-  ul = document.querySelector("ul .student-list");
-  li = ul.getElementsByTagName("li");
-  for (i = 0; i < li.length; i++) {
-    a = li[i].getElementsByTagName("a")[0];
-    txtValue = a.textContent || a.innerText;
-    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-      li[i].style.display = "block";
-  } else {
-      li[i].style.display = "none";
+//   ul = document.querySelector("ul .student-list");
+//   li = ul.getElementsByTagName("li");
+//   for (i = 0; i < li.length; i++) {
+//     a = li[i].getElementsByTagName("a")[0];
+//     txtValue = a.textContent || a.innerText;
+//     if (txtValue.toUpperCase().indexOf(filter) > -1) {
+//       li[i].style.display = "block";
+//   } else {
+//       li[i].style.display = "none";
+//   }
+// }
+// }
+const div = document.querySelector('.student-details');
+const names = div.getElementsByTagName("h3");
+
+ let input = document.getElementById('myInput');
+
+ input.addEventListener('keyup', () =>{
+
+  for(i = 0; i<names; i++){
+    //convert input to lowercase and compare with each string
+    if(i.toLowerCase().startsWith(input.value.toLowerCase()) && input.value != ""){
+  //create li element
+      let listItem = document.createElement("li");
+      //one common class name
+      listItem.classList.add('list-items');
+      
+      listItem.style.cursor = 'pointer';
+      listItem.setAttribute('onclick', "displayNames('"+ i +"')");
+      //display match part in bold
+      let word = "<b>"+ i.substring(0,input.value.length)+"</b>";
+      word += i.substring(input.value.length);
+      //display the value in array
+      listItem.innerHTML = word;
+      document.querySelector('.list').appendChild(listItem);
+    }
   }
-}
-}
+ });
+
