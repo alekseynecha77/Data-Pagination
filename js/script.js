@@ -120,12 +120,23 @@ addPagination(data);
 
 
 function myFunction(){
-  var input, filter, li, a, i, txtValue;
+  var input, filter, i;
   input = document.getElementById("myInput");
   filter = input.value.toLowerCase();
+  
+  let searchDiv = document.createElement('div');
+  searchDiv.innerHTML = 
+  `
+  <img class="avatar" src="  ${list[i].picture.thumbnail}" alt="Profile Picture">
+  <h3>
+    ${list[i]["name"].first}
+    ${list[i]["name"].last}
 
-  ul = document.querySelector("ul .student-list");
-  li = ul.getElementsByTagName("li");
+  </h3>
+  <span class="email">${list[i].email}</span>
+  
+  `;
+
   for (i = 0; i < li.length; i++) {
     a = li[i].getElementsByTagName("a")[0];
     txtValue = a.textContent || a.innerText;
@@ -135,7 +146,7 @@ function myFunction(){
       li[i].style.display = "none";
   }
 }
-}
+ }
 // const div = document.querySelector('.student-details');
 // const names = div.getElementsByTagName("h3");
 
