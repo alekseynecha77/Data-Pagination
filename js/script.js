@@ -119,28 +119,29 @@ addPagination(data);
 
 
 
-function myFunction(){
-  var input, filter, i;
-  input = document.getElementById("myInput");
-  filter = input.value.toLowerCase();
+function searchFunction(){
+  var input, filter, txtValue, i, div, li, head;
+   input = document.getElementById("myInput");
+   filter = input.value.toLowerCase();
   
-  let searchDiv = document.createElement('div');
-  searchDiv.innerHTML = 
-  `
-  <img class="avatar" src="  ${list[i].picture.thumbnail}" alt="Profile Picture">
-  <h3>
-    ${list[i]["name"].first}
-    ${list[i]["name"].last}
+  // let searchDiv = document.createElement('div');
+  // searchDiv.innerHTML = 
+  // `
+  // <img class="avatar" src="  ${list[i].picture.thumbnail}" alt="Profile Picture">
+  // <h3>
+  //   ${list[i]["name"].first}
+  //   ${list[i]["name"].last}
 
-  </h3>
-  <span class="email">${list[i].email}</span>
+  // </h3>
+  // <span class="email">${list[i].email}</span>
   
-  `;
-
+  // `;
+div = document.querySelector('div .student-details');
+li = div.getElementsByTagName('li');
   for (i = 0; i < li.length; i++) {
-    a = li[i].getElementsByTagName("a")[0];
-    txtValue = a.textContent || a.innerText;
-    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+    head = li[i].getElementsByTagName("h3")[0];
+    txtValue = head.textContent || head.innerText;
+    if (txtValue.toLowerCase().indexOf(filter) > -1) {
       li[i].style.display = "block";
   } else {
       li[i].style.display = "none";
