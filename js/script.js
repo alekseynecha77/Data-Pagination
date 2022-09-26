@@ -127,20 +127,31 @@ input.addEventListener('keyup', searchFunction);
 function searchFunction(){
   filterVal = document.getElementById('myInput').value.toLowerCase();
   let mainEl = document.querySelectorAll(".student-details h3");
-  
+  const count = 0;
+
+
   for (let i = 0; i < mainEl.length; i++) {
     let captions = mainEl[i].innerHTML.toLowerCase();
     let filter = captions.includes(filterVal);
+
     if (filter === true) {
       mainEl[i].parentNode.parentNode.style.display = "flex";
+
+      count+=1;
     } 
      else {
 
       mainEl[i].parentNode.parentNode.style.display = "none";
     }
 
-  
 
+
+  }
+  if(count === 0){
+    var addtoHead = document.querySelector('.student-list');
+
+    addtoHead.innerHTML += '<h3>No Results</h3>';
+  
   }
 
  }
