@@ -150,7 +150,7 @@ function searchFunction(){
   if(count === 0){
     var addtoHead = document.querySelector('.student-list');
 
-    addtoHead.innerHTML += '<h3>No Results</h3>';
+    addtoHead.innerHTML = "<h3>No Results</h1>";
   
   }
 
