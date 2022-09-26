@@ -127,7 +127,7 @@ input.addEventListener('keyup', searchFunction);
 function searchFunction(){
   filterVal = document.getElementById('myInput').value.toLowerCase();
   let mainEl = document.querySelectorAll(".student-details h3");
-  const count = 0;
+  var count = 0;
 
 
   for (let i = 0; i < mainEl.length; i++) {
@@ -135,9 +135,10 @@ function searchFunction(){
     let filter = captions.includes(filterVal);
 
     if (filter === true) {
+
       mainEl[i].parentNode.parentNode.style.display = "flex";
 
-      count+=1;
+      count++;
     } 
      else {
 
@@ -147,8 +148,9 @@ function searchFunction(){
 
 
   }
+  var addtoHead = document.querySelector('.student-list');
+
   if(count === 0){
-    var addtoHead = document.querySelector('.student-list');
 
     addtoHead.innerHTML = "<h3>No Results</h1>";
   
