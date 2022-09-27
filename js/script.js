@@ -154,8 +154,14 @@ function searchFunction(){
 
     addtoHead.innerHTML = "<h3>No Results</h1>";
   
+  }else{
+    addtoHead++;
   }
-
+  /* if (count >= filterVal.length) {
+    addtoHead.innerHTML = `awdeawedawedawed ${filterVal}` 
+  } else {
+    addtoHead.innerHTML = `` 
+  } */
  }
 
 
