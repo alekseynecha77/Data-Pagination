@@ -9,33 +9,31 @@ For assistance:
    Reach out in your Slack community: https://treehouse-fsjs-102.slack.com/app_redirect?channel=unit-2
 */
 
-
 /*
 Create the `showPage` function
 This function will create and insert/append the elements needed to display a "page" of nine students
 */
 function showPage(list, page) {
+  // create two variables which will represent the index for the first and last student on the page
+  var startIndex = page * 9 - 9;
 
-   // create two variables which will represent the index for the first and last student on the page
- var startIndex = page*9 -9;
+  var endIndex = page * 9;
+  // select the element with a class of `student-list` and assign it to a variable
 
- var endIndex = page*9;
-   // select the element with a class of `student-list` and assign it to a variable
+  var StudentLI = document.querySelector(".student-list");
 
- var StudentLI = document.querySelector('.student-list');
+  // set the innerHTML property of the variable you just created to an empty string
+  StudentLI.innerHTML = " ";
 
-   // set the innerHTML property of the variable you just created to an empty string
-   StudentLI.innerHTML = ' ';
-
-   // loop over the length of the `list` parameter
-   for (let i = 0; i<list.length; i++){
-  // inside the loop create a conditional to display the proper students
-       // inside the conditional:
-         // create the elements needed to display the student information
-         // insert the above elements
+  // loop over the length of the `list` parameter
+  for (let i = 0; i < list.length; i++) {
+    // inside the loop create a conditional to display the proper students
+    // inside the conditional:
+    // create the elements needed to display the student information
+    // insert the above elements
     if (i >= startIndex && endIndex > i) {
       /* code to run if condition is true */
-var StudentStyle = `<li class="student-item cf">
+      var StudentStyle = `<li class="student-item cf">
 
       <div class="student-details">
         <img class="avatar" src="  ${list[i].picture.thumbnail}" alt="Profile Picture">
@@ -52,16 +50,9 @@ var StudentStyle = `<li class="student-item cf">
     </li>
     `;
 
-
-    StudentLI.insertAdjacentHTML('beforeend', StudentStyle)
-
-   }
-
-   
-
- }
-
-
+      StudentLI.insertAdjacentHTML("beforeend", StudentStyle);
+    }
+  }
 }
 
 /*
@@ -69,92 +60,76 @@ Create the `addPagination` function
 This function will create and insert/append the elements needed for the pagination buttons
 */
 
-
 function addPagination(list) {
   // create a variable to calculate the number of pages needed
-var calculatePages =  Math.ceil(list.length / 9);
-var LinkLi = document.querySelector('.link-list');
+  var calculatePages = Math.ceil(list.length / 9);
+  var LinkLi = document.querySelector(".link-list");
   // select the element with a class of `link-list` and assign it to a variable
   // set the innerHTML property of the variable you just created to an empty string
-  LinkLi.innerHTML = ' ';
+  LinkLi.innerHTML = " ";
 
   // loop over the number of pages needed
-  for(let i =1; i<= calculatePages; i++ ){
+  for (let i = 1; i <= calculatePages; i++) {
     let button = `
     <li>
   <button type="button">${i}</button>
 </li>
     `;
 
-    LinkLi.insertAdjacentHTML('beforeend', button);
-
+    LinkLi.insertAdjacentHTML("beforeend", button);
   }
-  document.querySelector('button').classList.add('active');
+  document.querySelector("button").classList.add("active");
 
-    // create the elements needed to display the pagination button
-    // insert the above elements
+  // create the elements needed to display the pagination button
+  // insert the above elements
 
   // give the first pagination button a class of "active"
 
   // create an event listener on the `link-list` element
-    // if the click target is a button:
-      // remove the "active" class from the previous button
-      // add the active class to the clicked button
-      // call the showPage function passing the `list` parameter and page to display as arguments
-  LinkLi.addEventListener('click', (e)=>{
-    if(e.target.getAttribute('type')=== "button"){
+  // if the click target is a button:
+  // remove the "active" class from the previous button
+  // add the active class to the clicked button
+  // call the showPage function passing the `list` parameter and page to display as arguments
+  LinkLi.addEventListener("click", (e) => {
+    if (e.target.getAttribute("type") === "button") {
       document.querySelector(".active").classList.remove("active");
 
-    e.target.classList.add("active");
-    let text = e.target.textContent;
+      e.target.classList.add("active");
+      let text = e.target.textContent;
 
-showPage(data, text);
+      showPage(data, text);
     }
-  
   });
-
-
 }
 showPage(data, 1);
 addPagination(data);
 
-
 //Search Functionality
 const input = document.getElementById("myInput");
 
-input.addEventListener('keyup', searchFunction());
+input.addEventListener("keyup", searchFunction());
 
-function searchFunction(){
+function searchFunction() {
   //capturing user input
-  filterVal = document.getElementById('myInput').value.toLowerCase();
-//creating new array
+  filterVal = document.getElementById("myInput").value.toLowerCase();
+  //creating new array
   let newData = [];
   //doing a loop across all the objects in data array
-data.forEach((object)=>{
+  data.forEach((object) => {
+    //capturing first and last name
+    const name = `${object.name.first} ${object.name.last}`.toLowerCase();
+    //checking if the name includes what was typed
+    //if it is we pushed that object into this newData  array
+    if (name.includes(filterVal)) {
+      newData.push(object);
+    }
+  });
+  showPage(newData, 1);
+  addPagination(newData);
 
-  //capturing first and last name
-const name = `${object.name.first} ${object.name.last}`.toLowerCase();
-//checking if the name includes what was typed
-//if it is we pushed that object into this newData  array 
-if(name.includes(filterVal)){
-  newData.push(object);
+  var addtoHead = document.querySelector(".student-list");
+
+  if (newData.length === 0) {
+    addtoHead.innerHTML += "<h3>no results found</h3>";
+  }
 }
-
-
-
-
-});
-showPage(newData, 1);
-addPagination(newData);
-
-var addtoHead = document.querySelector('.student-list');
-
-if (newData.length === 0){
-
-  addtoHead.innerHTML += '<h3>no results found</h3>';
-}
- }
-
-
-
-
