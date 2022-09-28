@@ -130,6 +130,8 @@ function searchFunction(){
   var count = 0;
 
 
+
+
   for (let i = 0; i < mainEl.length; i++) {
     let captions = mainEl[i].innerHTML.toLowerCase();
     let filter = captions.includes(filterVal);
@@ -150,18 +152,19 @@ function searchFunction(){
   }
   var addtoHead = document.querySelector('.student-list');
 
-  if(count === 0){
+
+  let newData = [];
+  newData.forEach(data);
+  if(filterVal === Object.values(first, last) ){
+
+Object +=newData;
+  }
+
+  if(newData.length === 0){
 
     addtoHead.innerHTML = "<h3>No Results</h1>";
   
-  }else{
-    addtoHead++;
   }
-  /* if (count >= filterVal.length) {
-    addtoHead.innerHTML = `awdeawedawedawed ${filterVal}` 
-  } else {
-    addtoHead.innerHTML = `` 
-  } */
  }
 
 
