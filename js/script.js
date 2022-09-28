@@ -122,49 +122,37 @@ addPagination(data);
 //Search Functionality
 const input = document.getElementById("myInput");
 
-input.addEventListener('keyup', searchFunction);
+input.addEventListener('keyup', searchFunction());
 
 function searchFunction(){
+  //capturing user input
   filterVal = document.getElementById('myInput').value.toLowerCase();
-  let mainEl = document.querySelectorAll(".student-details h3");
-  var count = 0;
-
-
-
-
-  for (let i = 0; i < mainEl.length; i++) {
-    let captions = mainEl[i].innerHTML.toLowerCase();
-    let filter = captions.includes(filterVal);
-
-    if (filter === true) {
-
-      mainEl[i].parentNode.parentNode.style.display = "flex";
-
-      count++;
-    } 
-     else {
-
-      mainEl[i].parentNode.parentNode.style.display = "none";
-    }
-
-
-
-  }
-  var addtoHead = document.querySelector('.student-list');
-
-
+//creating new array
   let newData = [];
-  newData.forEach(data);
-  if(filterVal === Object.values(first, last) ){
+  //doing a loop across all the objects in data array
+data.forEach((object)=>{
 
-Object +=newData;
-  }
+  //capturing first and last name
+const name = `${object.name.first} ${object.name.last}`.toLowerCase();
+//checking if the name includes what was typed
+//if it is we pushed that object into this newData  array 
+if(name.includes(filterVal)){
+  newData.push(object);
+}
 
-  if(newData.length === 0){
 
-    addtoHead.innerHTML = "<h3>No Results</h1>";
-  
-  }
+
+
+});
+showPage(newData, 1);
+addPagination(newData);
+
+var addtoHead = document.querySelector('.student-list');
+
+if (newData.length === 0){
+
+  addtoHead.innerHTML += '<h3>no results found</h3>';
+}
  }
 
 
