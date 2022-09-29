@@ -114,6 +114,7 @@ input.addEventListener("keyup", searchFunction());
 function searchFunction() {
   //capturing user input
   filterVal = document.getElementById("myInput").value.toLowerCase();
+
   //creating new array
   let newData = [];
   //doing a loop across all the objects in data array
