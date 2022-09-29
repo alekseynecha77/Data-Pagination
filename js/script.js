@@ -78,8 +78,10 @@ function addPagination(list) {
 
     LinkLi.insertAdjacentHTML("beforeend", button);
   }
-  document.querySelector("button").classList.add("active");
-
+  const buttons = document.querySelectorAll('button');
+  if(buttons.length !== 0 ){
+    document.querySelector('button').classList.add('active');
+  }
   // create the elements needed to display the pagination button
   // insert the above elements
 
@@ -130,6 +132,6 @@ function searchFunction() {
   var addtoHead = document.querySelector(".student-list");
 
   if (newData.length === 0) {
-    addtoHead.innerHTML += "<h3>no results found</h3>";
+    addtoHead.innerHTML += "<h3>No results found</h3>";
   }
 }
